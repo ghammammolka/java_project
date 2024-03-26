@@ -1,20 +1,8 @@
 steps:
-  # Étape pour installer Apache Ant
-  - name: 'gcr.io/cloud-builders/docker'
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        apt-get update -y
-        apt-get install -y ant
-
-  # Étape pour construire le projet avec Apache Ant
-  - name: 'gcr.io/cloud-builders/ant'
-    args: ['build']
-
-  # Nouvelle étape pour construire l'application Java
-  - name: 'gcr.io/cloud-builders/ant'
-    args: ['build-java']
+  # Étape pour installer les dépendances et construire l'application
+  - name: 'maven:3.6.3-jdk-11'
+    entrypoint: 'mvn'
+    args: ['clean', 'install', '-DskipTests']
 
 # Spécifiez toute substitution que vous souhaitez utiliser
 # substitutions:
