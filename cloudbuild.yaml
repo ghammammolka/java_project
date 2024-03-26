@@ -1,0 +1,24 @@
+steps:
+  # Step to install dependencies
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  # Step to build the project
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+
+  # Step to run tests (if applicable)
+  # - name: 'gcr.io/cloud-builders/npm'
+  #   args: ['test']
+
+  # Step to deploy the built artifact (if applicable)
+  # - name: 'gcr.io/cloud-builders/gcloud'
+  #   args: ['app', 'deploy']
+
+# Specify any substitutions you want to use
+# substitutions:
+#   _YOUR_SUBSTITUTION_VARIABLE: your-value
+
+# Optionally, you can specify the images to be built
+# images:
+#   - 'gcr.io/$PROJECT_ID/your-image'
