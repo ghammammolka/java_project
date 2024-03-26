@@ -9,6 +9,3 @@ images:
 - 'gcr.io/cloud-builders/ant'
 
 # Spécifiez le chemin d'accès à votre code source
-source:
-  # Git
-  repo: https://github.com/ghammammolka/java_project.git
