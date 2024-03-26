@@ -1,8 +1,21 @@
 steps:
-  # Étape pour installer les dépendances et construire l'application
+  # Étape pour installer Apache Ant
   - name: 'maven:3.6.3-jdk-11'
-    entrypoint: 'mvn'
-    args: ['clean', 'install', '-DskipTests']
+    entrypoint: 'apt-get'
+    args: ['update', '-y']
+  - name: 'maven:3.6.3-jdk-11'
+    entrypoint: 'apt-get'
+    args: ['install', 'ant', '-y']
+
+  # Étape pour construire le projet avec Apache Ant
+  - name: 'maven:3.6.3-jdk-11'
+    entrypoint: 'ant'
+    args: ['-f', 'build.xml', 'build']
+
+  # Nouvelle étape pour construire l'application Java
+  - name: 'maven:3.6.3-jdk-11'
+    entrypoint: 'ant'
+    args: ['-f', 'build.xml', 'build-java']
 
 # Spécifiez toute substitution que vous souhaitez utiliser
 # substitutions:
