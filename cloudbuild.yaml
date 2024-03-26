@@ -1,9 +1,14 @@
 steps:
-  # Étape pour installer les dépendances et construire l'application
-  - name: 'maven:3.6.3-jdk-11'
-    entrypoint: 'mvn'
-    args: ['clean', 'install', '-DskipTests']
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone', 'https://github.com/ghammammolka/java_project.git']
 
-# Spécifiez toute substitution que vous souhaitez utiliser
-# substitutions:
-#   _VOS_SUBSTITUTIONS: vos-valeurs
+- name: 'gcr.io/cloud-builders/ant'
+  args: ['-f', 'build.xml', 'build']
+
+images:
+- 'gcr.io/cloud-builders/ant'
+
+# Spécifiez le chemin d'accès à votre code source
+source:
+  # Git
+  repo: https://github.com/ghammammolka/java_project.git
