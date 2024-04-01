@@ -1,9 +1,9 @@
 steps:
-- name: 'gcr.io/cloud-builders/ant'
-  args: ['compile']  # Exécuter la cible de compilation définie dans votre fichier build.xml
+- name: 'gcr.io/cloud-builders/ant:3.13.0'
+  args: ['compile']
 
-- name: 'gcr.io/cloud-builders/ant'
-  args: ['jar']  # Exécuter la cible de création du JAR définie dans votre fichier build.xml
+- name: 'gcr.io/cloud-builders/ant:3.13.0'
+  args: ['jar']
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy']  # Déployer votre application sur Google Cloud Platform
+  args: ['app', 'deploy']
