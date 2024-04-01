@@ -1,8 +1,18 @@
-steps:
-- name: 'maven:3.6.3-jdk-11'
-  args: ['mvn', 'clean', 'install']
+# Configuration de l'application Java
+java:
+  source_dir: src            # Répertoire contenant les fichiers source Java
+  output_dir: build/classes  # Répertoire de sortie pour les fichiers compilés
+  main_class: additonner  # Classe principale de votre application
+  dependencies:
+    - group: org.example
+      artifact: dependency1
+      version: 1.0.0
+    - group: org.example
+      artifact: dependency2
+      version: 2.0.0
 
-artifacts:
-  objects:
-    location: 'gs://appjava'
-    paths: ['container/additonner.jar']
+# Configuration du fichier JAR
+jar:
+  output_file: dist/additonner.jar  # Chemin et nom du fichier JAR de sortie
+  include_files:
+    - src/main/resources/cloudbuild.yaml  # Fichier YAML à inclure dans le JAR
