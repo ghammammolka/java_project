@@ -7,4 +7,4 @@ artifacts:
     location: 'gs://appjava'
   # optional: specify files to be uploaded as artifacts
   files:
-  - 'target/additon.jar'
+  - 'target/additonner.jar'
