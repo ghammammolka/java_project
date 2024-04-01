@@ -5,6 +5,4 @@ steps:
 artifacts:
   objects:
     location: 'gs://appjava'
-  # optional: specify files to be uploaded as artifacts
-  files:
-  - 'target/additonner.jar'
+    paths: ['target/additonner.jar']
