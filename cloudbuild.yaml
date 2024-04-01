@@ -1,11 +1,10 @@
 steps:
-- name: 'gcr.io/cloud-builders/git'
-  args: ['clone', 'https://github.com/ghammammolka/java_project.git']
+- name: 'maven:3.6.3-jdk-11'
+  args: ['mvn', 'clean', 'install']
 
-- name: 'gcr.io/cloud-builders/ant'
-  args: ['-f', 'build.xml', 'build']
-
-images:
-- 'gcr.io/cloud-builders/ant'
-
-# Spécifiez le chemin d'accès à votre code source
+artifacts:
+  objects:
+    location: 'gs://appjava'
+  # optional: specify files to be uploaded as artifacts
+  files:
+  - 'target/additon.jar'
