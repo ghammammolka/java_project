@@ -1,5 +1,5 @@
 steps:
-- name: 'gcr.io/cloud-builders/ant'  # Supprimez ":latest" pour éviter les problèmes liés à la version "latest"
+- name: 'gcr.io/cloud-builders/ant'  
   args: ['compile']
 
 - name: 'gcr.io/cloud-builders/ant'
