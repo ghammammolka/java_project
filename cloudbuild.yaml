@@ -1,10 +1,18 @@
 steps:
-- name: 'gcr.io/cloud-builders/ant'  
-  args: ['compile']
+- name: 'maven:3.8.4'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - 'mvn compile'
 
-- name: 'gcr.io/cloud-builders/ant'
-  args: ['jar']
+- name: 'maven:3.8.4'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - 'mvn package'
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['app', 'deploy']
-  dir: '.'  # Spécifiez le répertoire où se trouve le fichier cloudbuild.yaml
+  args:
+  - 'app'
+  - 'deploy'
+ dir: '.'
