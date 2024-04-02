@@ -15,4 +15,4 @@ steps:
   args:
   - 'app'
   - 'deploy'
- dir: '.'
+  dir: '.'
