@@ -1,9 +1,10 @@
 steps:
-- name: 'gcr.io/cloud-builders/ant:latest'
+- name: 'gcr.io/cloud-builders/ant'  # Supprimez ":latest" pour éviter les problèmes liés à la version "latest"
   args: ['compile']
 
-- name: 'gcr.io/cloud-builders/ant:latest'
+- name: 'gcr.io/cloud-builders/ant'
   args: ['jar']
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args: ['app', 'deploy']
+  dir: '.'  # Spécifiez le répertoire où se trouve le fichier cloudbuild.yaml
