@@ -1,10 +1,12 @@
-     <?xml version="1.0" encoding="UTF-8"?>
-<project name="additonner" default="default" basedir=".">
+    <?xml version="1.0" encoding="UTF-8"?>
+<project name="additonner" default="build" basedir=".">
     <description>Builds, tests, and runs the project additonner.</description>
+
+    <!-- Importer les configurations de build de NetBeans -->
     <import file="nbproject/build-impl.xml"/>
-    
+
     <!-- Compilation de l'application Java -->
-    <target name="compile">
+    <target name="compile" depends="-pre-compile">
         <javac srcdir="src" destdir="build/classes"/>
     </target>
 
@@ -16,12 +18,12 @@
         </jar>
     </target>
 
-    <!-- Manipulation du fichier YAML -->
+    <!-- Copie du fichier cloudbuild.yaml dans le dossier de distribution -->
     <target name="copy-yaml" depends="jar">
         <copy file="config/cloudbuild.yaml" todir="dist"/>
     </target>
 
-    <!-- Tâche principale pour exécuter toutes les étapes -->
+    <!-- Tâche principale pour exécuter toutes les étapes de construction -->
     <target name="build" depends="copy-yaml">
         <echo message="Build successful!"/>
     </target>
