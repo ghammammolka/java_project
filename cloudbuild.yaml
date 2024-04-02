@@ -3,16 +3,17 @@ steps:
   entrypoint: 'bash'
   args:
   - '-c'
-  - 'cd src && mvn compile'
+  - 'ant -f build.xml compile'
 
 - name: 'maven:3.8.4'
   entrypoint: 'bash'
   args:
   - '-c'
-  - 'cd src && mvn package'
+  - 'ant -f build.xml jar'
 
 - name: 'gcr.io/cloud-builders/gcloud'
   args:
   - 'app'
   - 'deploy'
-  - './dist'
+  - '--project=internship-415612 '
+  dir: '.'
