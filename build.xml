@@ -20,7 +20,7 @@
 
     <!-- Copie du fichier cloudbuild.yaml dans le dossier de distribution -->
     <target name="copy-yaml" depends="jar">
-        <copy file="config/cloudbuild.yaml" todir="dist"/>
+        <copy file="./cloudbuild.yaml" todir="dist"/>
     </target>
 
     <!-- Tâche principale pour exécuter toutes les étapes de construction -->
