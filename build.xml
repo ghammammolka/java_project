@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="additonner" default="default" basedir=".">
-    <description>Builds, tests, and runs the project additonner.</description>
+<project name="additonner" default="build">
 
-    <!-- Importer les configurations de build de Maven -->
-    <import file="nbproject/maven-impl.xml"/>
+  <properties>
+    <maven.version>3.8.6</maven.version>
+  </properties>
 
-    <!-- Compilation de l'application Java -->
-    <target name="compile" depends="-pre-compile">
-        <exec executable="mvn">
-            <arg line="compile"/>
-        </exec>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <target name="clean">
+      <delete dir="target"/>
     </target>
 
-    <!-- Création du fichier JAR -->
-    <target name="jar" depends="compile">
-        <!-- Vous n'avez pas besoin de créer le JAR explicitement avec Maven -->
+    <target name="compile">
+      <mkdir dir="target/classes"/>
+      <javac srcdir="src/main/java" destdir="target/classes"/>
     </target>
 
-    <!-- Copie du fichier cloudbuild.yaml dans le dossier de distribution -->
-    <target name="copy-yaml" depends="jar">
-        <!-- Vous n'avez pas besoin de copier de fichier YAML pour Maven -->
+    <target name="test">
+      <surefire forkmode="never">
+        <classpath ref="project.classpath"/>
+      </surefire>
     </target>
 
-    <!-- Tâche principale pour exécuter toutes les étapes de construction -->
-    <target name="build" depends="copy-yaml">
-        <echo message="Build successful!"/>
+    <target name="install">
+      <jar destdir="target" manifest="src/main/resources/META-INF/MANIFEST.MF">
+        <fileset dir="target/classes"/>
+      </jar>
     </target>
+
+    <target name="build" depends="clean, compile, test, install"/>
+  </build>
+
 </project>
