@@ -1,4 +1,8 @@
 steps:
-- name: Build Java application
-  image: gcr.io/cloudbuild/openjdk11
-  command: ["mvn", "clean", "install"]
+  - name: Install Ant
+    image: ubuntu:latest  # Use a lightweight image for installing Ant
+    # Update with the desired Ant version if needed
+    run: ["apt-get", "update", && "apt-get", "install", "-y", "ant"]
+  - name: Build Java application
+    image: maven:3.8.4
+    args: ["mvn", "clean", "install"]
