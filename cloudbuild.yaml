@@ -1,19 +1,4 @@
 steps:
-- name: 'maven:3.8.4'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - 'ant -f build.xml compile'
-
-- name: 'maven:3.8.4'
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - 'ant -f build.xml jar'
-
-- name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - 'app'
-  - 'deploy'
-  - '--project=internship-415612 '
-  dir: '.'
+- name: Build Java application
+  image: gcr.io/cloudbuild/openjdk11
+  command: ["mvn", "clean", "install"]
