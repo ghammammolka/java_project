@@ -1,4 +1,4 @@
 steps:
 - name: maven:3.8.6-jdk-11
   entrypoint: javac
-  args: ["-jar", "./src/additonner.java"]
+  args: ["./src/additonner.java"]
