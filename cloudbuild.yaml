@@ -4,4 +4,4 @@ steps:
   args: ['./src/additonner.java']
 
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', './dist/additonner.jar', 'gs://app-java/']
+  args: ['cp', './dist/additonner.jar', 'gs://appjava/']
