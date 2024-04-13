@@ -10,5 +10,5 @@ steps:
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars']
 
 - name: 'openjdk:11'
-  args: ['java', '-jar', 'additon.jar']
+  args: ['java', '-jar', 'jars/addition.jar']
 
