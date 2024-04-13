@@ -3,16 +3,11 @@ steps:
   entrypoint: 'javac'
   args: ['./src/additonner.java']
 
-- name: 'openjdk:11'
-  entrypoint: 'jar'
-  args: ['cf', '/home/molkaghammam2/jars/addition.jar', '-C', './src/', 'additonner.class']
-
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '/home/molkaghammam2/jars/addition.jar', 'gs://appjava/']
-
+  args: ['cp', './dist/additonner.jar', 'gs://appjava/']
+  
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars/addition.jar']
 
-- name: 'openjdk:11'
-  entrypoint: 'java'
-  args: ['-jar', '/home/molkaghammam2/jars/addition.jar']
+- name: 'gcr.io/cloud-builders/java'
+  args: ['java', '-jar', '/home/molkaghammam2/jars/addition.jar']
