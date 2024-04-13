@@ -7,8 +7,11 @@ steps:
   args: ['cp', './dist/additonner.jar', 'gs://appjava/']
   
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jar']
+  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars']
+
+  - name: 'bash'
+  args: ['bash', '-c', 'chmod +x /home/molkaghammam2/jars/addition.jar']
 
 - name: 'openjdk:11'
-  args: ['java', '-jar', '/home/molkaghammam2/jar/additonner.jar']
+  args: ['java', '-jar', '/home/molkaghammam2/jars/addition.jar']
 
