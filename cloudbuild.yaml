@@ -5,6 +5,9 @@ steps:
 
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', './dist/additonner.jar', 'gs://appjava/']
+  
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars/addition.jar']
 
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'scp', './dist/additonner.jar', 'instance-20240227-124824:~/', '--zone', 'us-central1-a']
+- name: 'gcr.io/cloud-builders/java'
+  args: ['java', '-jar', '/home/molkaghammam2/jars/addition.jar']
