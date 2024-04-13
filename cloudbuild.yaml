@@ -9,7 +9,7 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars']
 
-  - name: 'bash'
+- name: 'bash'
   args: ['bash', '-c', 'chmod +x /home/molkaghammam2/jars/addition.jar']
 
 - name: 'openjdk:11'
