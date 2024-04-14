@@ -9,5 +9,6 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars/']
 
-- name: 'openjdk:11'
-  args: ['java', '-jar', '/home/molkaghammam2/jar/addition.jar']  
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['compute', 'ssh', 'molkaghammam2@instance-20240227-124824', '--command', 'java -jar /home/molkaghammam2/jars/addition.jar']
+
