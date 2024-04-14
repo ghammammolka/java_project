@@ -14,5 +14,10 @@ steps:
   id: get-instance
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'ssh', '--zone=us-central1-a', 'molkaghammam2@instance-20240227-124824', '--command', 'java -jar /home/molkaghammam2/jars/addition.jar']
-  condition: "$get-instance.status == 'SUCCESS'"
+  entrypoint: '/bin/bash'
+  args:
+    - '-c'
+    - |
+      if [[ "$(echo '$get-instance' | jq '.status')" == '"SUCCESS"' ]]; then
+        gcloud compute ssh --zone=us-central1-a molkaghammam2@instance-20240227-124824 --command 'java -jar /home/molkaghammam2/jars/addition.jar'
+      fi
