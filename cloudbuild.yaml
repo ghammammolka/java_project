@@ -10,6 +10,9 @@ steps:
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars']
 
 - name: 'gcr.io/cloud-builders/gcloud'
+  args: ['compute', 'instances', 'list', '--format=json']
+  id: get-instance
+
+- name: 'gcr.io/cloud-builders/gcloud'
   args: ['compute', 'ssh', '--zone=us-central1-a', 'molkaghammam2@instance-20240227-124824', '--command', 'java -jar /home/molkaghammam2/jars/addition.jar']
-
-
+  condition: "$get-instance.status == 'SUCCESS'"
