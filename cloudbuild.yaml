@@ -7,17 +7,7 @@ steps:
   args: ['cp', './dist/additonner.jar', 'gs://appjava/']
   
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars']
+  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/']
 
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'instances', 'list', '--format=json']
-  id: get-instance
-
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: '/bin/bash'
-  args:
-    - '-c'
-    - |
-      if [[ "$(echo '$get-instance' | jq '.status')" == '"SUCCESS"' ]]; then
-        gcloud compute ssh --zone=us-central1-a molkaghammam2@instance-20240227-124824 --command 'java -jar /home/molkaghammam2/jars/addition.jar'
-      fi
+- name: 'openjdk:11' 
+  args: ['java', '-jar', '/home/molkaghammam2/additonner.jar'] 
