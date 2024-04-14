@@ -9,6 +9,5 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2']
 
-- name: 'openjdk:11'
-  entrypoint: 'java'
-  args: ['-jar', '/home/molkaghammam2/additonner.jar']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['run', '-d', '-p', '8080:8080', '-v', '/home/molkaghammam2/additonner.jar:/app/additonner.jar', 'openjdk:11', 'java', '-jar', '/app/additonner.jar']
