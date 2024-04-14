@@ -7,10 +7,7 @@ steps:
   args: ['cp', './dist/additonner.jar', 'gs://appjava/']
   
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars/addition.jar']
+  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/jars/']
 
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'scp', '--zone=us-central1-a', '/home/molkaghammam2/jars/addition.jar', 'molkaghammam2@instance-20240227-124824:/home/molkaghammam2/jars/addition.jar']
-
-- name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'ssh', 'molkaghammam2@instance-20240227-124824', '--command', 'java -jar /home/molkaghammam2/jars/addition.jar']
+- name: 'openjdk:11'
+  args: ['java', '-jar', '/home/molkaghammam2/jar/addition.jar']  
