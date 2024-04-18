@@ -8,6 +8,10 @@ steps:
 
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2']
-
+  
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['compute', 'ssh', 'instance-20240227-124824', '--command', 'java -jar /home/molkaghammam2/additonner.jar']
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      gcloud compute ssh instance-20240227-124824 --command "java -jar /home/molkaghammam2/additonner.jar"
