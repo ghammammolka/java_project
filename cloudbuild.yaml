@@ -10,9 +10,13 @@ steps:
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2']
   
 - name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
+  entrypoint: 'gcloud'
   args:
-    - '-c'
-    - |
-      gcloud compute ssh instance-20240227-124824 --zone=us-central1-a --command "java -jar /home/molkaghammam2/additonner.jar"
+    - 'compute'
+    - 'ssh'
+    - 'instance-20240227-124824'
+    - '--zone=us-central1-a'
+    - '--command'
+    - 'java -jar /home/molkaghammam2/additonner.jar'
+
 
