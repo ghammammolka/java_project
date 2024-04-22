@@ -17,4 +17,5 @@ steps:
     - 'molkaghammam2@instance-20240227-124824'
     - '--zone=us-central1-a'
     - '--command'
-    - 'java -jar /home/molkaghammam2/additonner.jar 5 30'    
+    - 'java -jar /home/molkaghammam2/additonner.jar 5 30'  
+    - '--quiet'  # Ajoutez cette option pour éviter l'invite de confirmation
