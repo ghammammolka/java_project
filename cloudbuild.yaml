@@ -7,7 +7,7 @@ steps:
   args: ['cp', './dist/additonner.jar', 'gs://appjava/']
 
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2']
+  args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/java_apps']
   
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'gcloud'
@@ -17,5 +17,5 @@ steps:
     - 'molkaghammam2@instance-20240227-124824'
     - '--zone=us-central1-a'
     - '--command'
-    - 'java -jar /home/molkaghammam2/additonner.jar 5 30'  
+    - 'java -jar /home/molkaghammam2/java_apps/additonner.jar 5 30'  
     - '--quiet'  # Ajoutez cette option pour éviter l'invite de confirmation
