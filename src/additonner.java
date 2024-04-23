@@ -1,9 +1,9 @@
 import java.util.Scanner;
-public class Additionner {
+public class additionner {
 
     public static void main(String[] args) {
         if (args.length < 2) {
-            System.out.println("Usage: java Additionner <nombre1> <nombre2>");
+            System.out.println("Usage: java additionner <nombre1> <nombre2>");
             return;
         }
 
