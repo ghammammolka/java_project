@@ -14,7 +14,7 @@ steps:
   args:
     - 'compute'
     - 'ssh'
-    - 'molkaghammam2@instance-20240227-124824'
+    - 'useradm@instance-20240227-124824'
     - '--zone=us-central1-a'
     - '--command'
     - 'java -jar /home/molkaghammam2/java_apps/additonner.jar 5 30'  
