@@ -10,7 +10,7 @@ steps:
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/java_apps']
 
 - name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', './java_project.service', 'gs://appjava/']  # Ajoutez cette étape pour copier votre fichier de service
+  args: ['cp', '/home/molkaghammam2/java_apps/java_project.service', 'gs://appjava/']
 
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'gcloud'
@@ -21,9 +21,9 @@ steps:
     - '--zone=us-central1-a'
     - '--command'
     - |
-      sudo cp /home/molkaghammam2/java_apps/java_project.service /etc/systemd/system/  # Copie le fichier de service dans le répertoire approprié
-      sudo systemctl daemon-reload  # Recharge le démon systemd pour prendre en compte les modifications
-      sudo systemctl enable java_project.service  # Active le service pour qu'il démarre automatiquement au démarrage
-      sudo systemctl start java_project.service  # Démarre le service
+      sudo cp /home/molkaghammam2/java_apps/java_project.service /etc/systemd/system/
+      sudo systemctl daemon-reload
+      sudo systemctl enable java_project.service
+      sudo systemctl start java_project.service
       java -jar /home/molkaghammam2/java_apps/additonner.jar
-    - '--quiet' 
+    - '--quiet'
