@@ -14,7 +14,7 @@ steps:
   args:
     - '-c'
     - |
-      sudo systemctl restart /etc/systemd/system/java_project.service
+      systemctl restart /etc/systemd/system/java_project.service
 
 ###############################################################################
 - name: 'gcr.io/cloud-builders/gcloud'
