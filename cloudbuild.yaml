@@ -9,9 +9,6 @@ steps:
 - name: 'gcr.io/cloud-builders/gsutil'
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/java_apps']
 
-- name: 'gcr.io/cloud-builders/gsutil'
-  args: ['cp', '/home/useradm/java_project.service', 'gs://appjava/']
-
 - name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'gcloud'
   args:
