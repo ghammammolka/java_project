@@ -18,9 +18,6 @@ steps:
     - '--zone=us-central1-a'
     - '--command'
     - |
-      sudo cp /home/molkaghammam2/java_apps/java_project.service /etc/systemd/system/
-      sudo systemctl daemon-reload
-      sudo systemctl enable java_project.service
-      sudo systemctl start java_project.service
+      sudo systemctl restart java_project.service
       java -jar /home/molkaghammam2/java_apps/additonner.jar
     - '--quiet'
