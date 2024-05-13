@@ -10,14 +10,6 @@ steps:
   args: ['cp', 'gs://appjava/additonner.jar', '/home/molkaghammam2/java_apps']
 
 - name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args:
-    - '-c'
-    - |
-      systemctl restart /etc/systemd/system/java_project.service
-
-###############################################################################
-- name: 'gcr.io/cloud-builders/gcloud'
   entrypoint: 'gcloud'
   args:
     - 'compute'
@@ -26,7 +18,5 @@ steps:
     - '--zone=us-central1-a'
     - '--command'
     - |
-      sudo systemctl restart java_project.service
       java -jar /home/molkaghammam2/java_apps/additonner.jar
     - '--quiet'
-####################################################################################
